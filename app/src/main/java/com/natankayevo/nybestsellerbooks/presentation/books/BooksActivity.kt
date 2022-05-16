@@ -3,6 +3,7 @@ package com.natankayevo.nybestsellerbooks.presentation.books
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,24 +18,35 @@ class BooksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         booksBinding = ActivityBooksBinding.inflate(layoutInflater)
-        val view = booksBinding.root
-        setContentView(view)
+        val booksView = booksBinding.root
+        setContentView(booksView)
 
         booksBinding.toolbar.title = getString(R.string.books_title)
         setSupportActionBar(booksBinding.toolbar)
 
-        with(booksBinding.recyclerView) {
-            layoutManager = LinearLayoutManager(
-                this@BooksActivity,
-                RecyclerView.VERTICAL,
-                false
-            )
+        val viewModel: BooksViewModel
+        viewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
 
-            setHasFixedSize(true)
-            adapter = BooksAdapter(getBooks())
-        }
+        setObservers(viewModel)
 
-        // val viewModel = ViewModelProvider(booksBinding.root)
+        viewModel.getBooks()
+    }
+
+    private fun setObservers(viewModel: BooksViewModel) {
+        viewModel.books.observe(this, Observer {
+            it?.let { books ->
+                with(booksBinding.recyclerView) {
+                    layoutManager = LinearLayoutManager(
+                        this@BooksActivity,
+                        RecyclerView.VERTICAL,
+                        false
+                    )
+
+                    setHasFixedSize(true)
+                    adapter = BooksAdapter(books)
+                }
+            }
+        })
     }
 
     fun getBooks(): List<Book> = listOf(
