@@ -35,8 +35,9 @@ android {
     }
 }
 
-ext{
-
+ext {
+    retrofit_version = "2.9.0"
+    moshi_version = "1.13.0"
 }
 
 dependencies {
@@ -56,4 +57,13 @@ dependencies {
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+}
+
+// Retrofit
+dependencies {
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+
+    // Moshi converter to deserialize json
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.moshi:moshi:$moshi_version"
 }
