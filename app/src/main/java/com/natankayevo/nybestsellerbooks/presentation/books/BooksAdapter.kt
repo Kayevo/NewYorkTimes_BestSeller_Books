@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.natankayevo.nybestsellerbooks.data.model.Book
-import com.natankayevo.nybestsellerbooks.databinding.ActivityBooksBinding
 import com.natankayevo.nybestsellerbooks.databinding.ItemBookBinding
 
 class BooksAdapter(
@@ -28,7 +27,7 @@ class BooksAdapter(
 
     override fun getItemCount(): Int = books.size
 
-    inner class BooksViewHolder(val itemBookBinding: ItemBookBinding) :
+    inner class BooksViewHolder(itemBookBinding: ItemBookBinding) :
         RecyclerView.ViewHolder(itemBookBinding.root) {
 
         private val viewTitle: TextView = itemBookBinding.bookTitle

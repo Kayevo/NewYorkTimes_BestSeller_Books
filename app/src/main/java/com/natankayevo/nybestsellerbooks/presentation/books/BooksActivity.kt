@@ -1,15 +1,11 @@
 package com.natankayevo.nybestsellerbooks.presentation.books
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.natankayevo.nybestsellerbooks.R
-import com.natankayevo.nybestsellerbooks.data.model.Book
 import com.natankayevo.nybestsellerbooks.databinding.ActivityBooksBinding
 
 class BooksActivity : AppCompatActivity() {
@@ -24,8 +20,8 @@ class BooksActivity : AppCompatActivity() {
         booksBinding.toolbar.title = getString(R.string.books_title)
         setSupportActionBar(booksBinding.toolbar)
 
-        val viewModel: BooksViewModel
-        viewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
+        val viewModel: BooksViewModel = ViewModelProvider(this)
+            .get(BooksViewModel::class.java)
 
         setObservers(viewModel)
 
@@ -33,7 +29,7 @@ class BooksActivity : AppCompatActivity() {
     }
 
     private fun setObservers(viewModel: BooksViewModel) {
-        viewModel.books.observe(this, Observer {
+        viewModel.booksLiveData.observe(this) {
             it?.let { books ->
                 with(booksBinding.recyclerView) {
                     layoutManager = LinearLayoutManager(
@@ -46,11 +42,6 @@ class BooksActivity : AppCompatActivity() {
                     adapter = BooksAdapter(books)
                 }
             }
-        })
+        }
     }
-
-    fun getBooks(): List<Book> = listOf(
-        Book("TitleA", "AuthorA"),
-        Book("TitleB", "AuthorB ")
-    )
 }
