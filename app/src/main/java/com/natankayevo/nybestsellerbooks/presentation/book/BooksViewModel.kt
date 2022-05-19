@@ -1,4 +1,4 @@
-package com.natankayevo.nybestsellerbooks.presentation.books
+package com.natankayevo.nybestsellerbooks.presentation.book
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

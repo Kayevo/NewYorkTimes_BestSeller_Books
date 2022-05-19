@@ -1,4 +1,4 @@
-package com.natankayevo.nybestsellerbooks.presentation.books
+package com.natankayevo.nybestsellerbooks.presentation.book
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,7 +27,7 @@ class BooksAdapter(
 
     override fun getItemCount(): Int = books.size
 
-    inner class BooksViewHolder(itemBookBinding: ItemBookBinding) :
+    inner class BooksViewHolder(private val itemBookBinding: ItemBookBinding) :
         RecyclerView.ViewHolder(itemBookBinding.root) {
 
         private val viewTitle: TextView = itemBookBinding.bookTitle
@@ -37,9 +37,11 @@ class BooksAdapter(
             viewTitle.text = book.title
             viewAuthor.text = book.author
 
-            /*itemBookBinding.root.setOnClickListener(){
+            itemBookBinding.root.setOnClickListener {
 
             }
+
+            /*
             binding.root.setOnClickListener {
                 onItemClick?.invoke(subscriber)
             }*/

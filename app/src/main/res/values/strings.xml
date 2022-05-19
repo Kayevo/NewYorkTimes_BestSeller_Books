@@ -1,7 +1,13 @@
 <resources>
     <!-- App name -->
     <string name="app_name">NY best seller books</string>
+
     <!-- Books activity -->
     <!-- Books list fragment -->
     <string name="books_title">Books</string>
+
+    <!-- Book details activity -->
+    <string name="books_details_title">Title</string>
+    <string name="books_details_author">Author</string>
+    <string name="books_details_description">Description</string>
 </resources>
