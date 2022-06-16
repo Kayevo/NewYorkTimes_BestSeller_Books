@@ -2,6 +2,7 @@ package com.natankayevo.nybestsellerbooks.presentation.book
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.natankayevo.nybestsellerbooks.R
 import com.natankayevo.nybestsellerbooks.data.model.Book
 import com.natankayevo.nybestsellerbooks.data.repository.BooksRepository
 import com.natankayevo.nybestsellerbooks.data.response.BooksResult
@@ -26,6 +27,9 @@ class BooksViewModelTest {
     // Mock variable
     @Mock
     private lateinit var booksLiveDataObserver: Observer<List<Book>>
+
+    @Mock
+    private lateinit var errorLiveDataObserver: Observer<Int>
 
     // instance all mocks in test class
     @Before
@@ -52,6 +56,27 @@ class BooksViewModelTest {
         // Assert
         verify(booksLiveDataObserver).onChanged(books)
 
+    }
+
+    @Test
+    fun getAuthorizationError(){
+        // Arrange
+
+        val errorAuthMessage = R.string.error_401
+        val errorStatusCode = 401
+
+        val mockRepoErrorAuth = MockRepository(BooksResult.APIError(errorStatusCode))
+
+        val viewModel = BooksViewModel(mockRepoErrorAuth)
+        viewModel.error.observeForever(errorLiveDataObserver)
+
+        // Action
+
+        viewModel.getBooks()
+
+        // Assert
+
+        verify(errorLiveDataObserver).onChanged(errorAuthMessage)
     }
 }
 

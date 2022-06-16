@@ -24,8 +24,13 @@ class BooksViewModel(var dataSource: BooksRepository) : ViewModel() {
                  is BooksResult.Success -> {
                      booksLiveData.value = result.books
                  }
+                 is BooksResult.APIError -> {
+                     if(result.statusCode == 401){
+                         error.value = R.string.error_401
+                     }
+                 }
                  is BooksResult.ServerError ->{
-                    error.value = R.string.data_error_500
+                    error.value = R.string.error_500
                  }
              }
 
