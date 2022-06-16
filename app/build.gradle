@@ -70,3 +70,9 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
     implementation "com.squareup.moshi:moshi:$moshi_version"
 }
+
+// Unitary tests with mockito
+dependencies{
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+}

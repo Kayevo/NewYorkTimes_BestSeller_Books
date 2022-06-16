@@ -10,4 +10,7 @@
     <string name="books_details_title">Title</string>
     <string name="books_details_author">Author</string>
     <string name="books_details_description">Description</string>
+
+    <!-- Error on data layer -->
+    <string name="data_error_500">Error 500</string>
 </resources>

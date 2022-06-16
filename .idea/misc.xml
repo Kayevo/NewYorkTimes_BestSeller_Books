@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/activity_book_details.xml" value="0.2" />
-        <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/activity_books.xml" value="0.264" />
+        <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/activity_books.xml" value="0.2" />
         <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/activity_main.xml" value="0.20989583333333334" />
         <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/book_item.xml" value="0.264" />
+        <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/include_toolbar.xml" value="0.1" />
         <entry key="..\:/Android/Projects/NewYorkTimes_BestSeller_Books/app/src/main/res/layout/item_book.xml" value="0.152" />
       </map>
     </option>
